@@ -42,11 +42,13 @@ public class Airport
     {
         /* to be implemented in part (b) */
         int peopleOut = 0;
-        for(Flight f : allFlights){
-            double percent = (double) f.getNumPassengers()/ f.getCapacity();
-            if(percent < 0.2){
-                allFlights.remove(f);
-                peopleOut += f.getNumPassengers();
+
+        for(int i = 0; i < allFlights.size(); i++){
+            Flight current = allFlights.get(i);
+            if((double) current.getNumPassengers()/ current.getCapacity() < 0.2){
+                peopleOut+= current.getNumPassengers();
+                allFlights.remove(i);
+                i--;
             }
         }
         return peopleOut;
